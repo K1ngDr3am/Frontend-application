@@ -22,9 +22,9 @@ const cars = await getCarsById(id);
 
 const carsDetails = `
     <div class="col">
-        <h3>${cars.name}</h3>
+        <h3>${cars.type}</h3>
         <p>${cars.description}</p>
-        <p>Precio: ${car.price}</p>
+        <p>Precio: ${cars.price}</p>
         <button class="btn btn-warning" onclick="enableEdit"(${cars.id})">Editar</button>
         <button class="btn btn-danger" onclick="deleteCars"(${cars.id})">Eliminar</button>
     </div>
@@ -38,7 +38,7 @@ window.enableEdit = async (id) => {
 
     const editForm = `
     <div class="row gap-3">
-        <input type="text" id="name" value="${cars.name}">
+        <input type="text" id="type" value="${cars.type}">
         >textarea id="description">${cars.description}</textarea>
         <input type="number" id="price" value="${cars.price}">
         <button class="btn btn-success" onclick="saveEdit(${id})">Guardar</button>
@@ -49,12 +49,12 @@ window.enableEdit = async (id) => {
 
 // Guardar la informacion actualizada
 window.saveEdit = async (id) => {
-    const updateCars = {
-        name: document.getElementById("name").value,
+    const updatecars = {
+        type: document.getElementById("type").value,
         description: document.getElementById("description").value,
         price: parseFloat(document.getElementById("price").value),
     };
-    await updateCars(id, updateCars);
+    await updatecars(id, updateCars);
     location.reload(); // Recarga la página para ver los cambios
 };
 
