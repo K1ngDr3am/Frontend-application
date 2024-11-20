@@ -1,32 +1,32 @@
 // Importar los metodos del api.js
-import { getAllCars , getCarsById , updateCars , deleteCars } from "./api";
+import { getAllCars , getCarsById , updateCars , deleteCars } from "./api.js";
 
 document.addEventListener ("DOMContentLoaded", async () => {
     const carsList = document.getElementById("cars-list")
 
     const cars = await getAllCars();
-    carsList.innerHTML = cars.map(car => `
+    carsList.innerHTML = cars.map(cars => `
         <div class="col-xs-12 col-sm-6 col-md-3 card">
           <div class="card-body d-flex flex-column justify-content-end">
-            <h5 class="card-title">${car.name}</h5>
-            <p class="card-text">${car.price}</p>
-            <a onclick="viewCar(${car.id})" class="btn btn-primary">Ver más</a>
+            <h5 class="card-title">${cars.name}</h5>
+            <p class="card-text">${cars.price}</p>
+            <a onclick="viewCar(${cars.id})" class="btn btn-primary">Ver más</a>
           </div>
         </div>
         `).join("");
 });
 
 // Metodo para ver los detalles del producto cuando damos click en el boton ver mas
-window.viewCar = async (id) => {
-const car = await getCarsById(id);
+window.viewCars = async (id) => {
+const cars = await getCarsById(id);
 
 const carsDetails = `
     <div class="col">
-        <h3>${car.name}</h3>
-        <p>${car.description}</p>
+        <h3>${cars.name}</h3>
+        <p>${cars.description}</p>
         <p>Precio: ${car.price}</p>
-        <button class="btn btn-warning" onclick="enableEdit"(${car.id})">Editar</button>
-        <button class="btn btn-danger" onclick="deleteCars"(${car.id})">Eliminar</button>
+        <button class="btn btn-warning" onclick="enableEdit"(${cars.id})">Editar</button>
+        <button class="btn btn-danger" onclick="deleteCars"(${cars.id})">Eliminar</button>
     </div>
 `;
 document.getElementById("cars-list").innerHTML = carsDetails;
@@ -34,13 +34,13 @@ document.getElementById("cars-list").innerHTML = carsDetails;
 
 // Vista para editar la informacion
 window.enableEdit = async (id) => {
-    const car = await getCarsById(id);
+    const cars = await getCarsById(id);
 
     const editForm = `
     <div class="row gap-3">
-        <input type="text" id="name" value="${car.name}">
-        >textarea id="description">${car.description}</textarea>
-        <input type="number" id="price" value="${car.price}">
+        <input type="text" id="name" value="${cars.name}">
+        >textarea id="description">${cars.description}</textarea>
+        <input type="number" id="price" value="${cars.price}">
         <button class="btn btn-success" onclick="saveEdit(${id})">Guardar</button>
     </div>
     `;
@@ -49,12 +49,12 @@ window.enableEdit = async (id) => {
 
 // Guardar la informacion actualizada
 window.saveEdit = async (id) => {
-    const updateCar = {
+    const updateCars = {
         name: document.getElementById("name").value,
         description: document.getElementById("description").value,
         price: parseFloat(document.getElementById("price").value),
     };
-    await updateCars(id, updateCar);
+    await updateCars(id, updateCars);
     location.reload(); // Recarga la página para ver los cambios
 };
 
