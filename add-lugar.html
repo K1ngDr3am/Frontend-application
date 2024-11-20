@@ -60,14 +60,14 @@
 
     <script type="module" src="js/api.js"></script>
 <script type="module">
-  
+
   import { createCars } from './js/api.js';
 
   // Guardar Formulario de agregar autos en base de datos
   document.getElementById('cars-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const newCar = {
-      name: document.getElementById('name').value,
+      type: document.getElementById('type').value,
       description: document.getElementById('description').value,
       price: parseFloat(document.getElementById('price').value),
     };

@@ -12,15 +12,15 @@ export const getCarsById = async (id) => {
     return response.json();
 };
 
-// Crear un producto
-export const createCars = async(cars) => {
-    const response = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(cars)
+// Crear un Producto
+export const addCarss = async (product) => {
+    const respone = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(product)
     });
-    return response.json();
-};
+    return respone.json();
+  };
 
 // Actualizar un producto
 export const updateCars = async(id, cars) => {
