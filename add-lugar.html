@@ -61,7 +61,7 @@
     <script type="module" src="js/api.js"></script>
 <script type="module">
 
-  import { createCars } from './js/api.js';
+  import { addCars } from './js/api.js';
 
   // Guardar Formulario de agregar autos en base de datos
   document.getElementById('cars-form').addEventListener('submit', async (e) => {
@@ -71,7 +71,7 @@
       description: document.getElementById('description').value,
       price: parseFloat(document.getElementById('price').value),
     };
-    await createCars(newCar);
+    await addCars(newCar);
     window.location.href = 'index.html'; // Redirige al inicio de la página
   });
 </script>

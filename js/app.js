@@ -8,8 +8,8 @@ document.addEventListener ("DOMContentLoaded", async () => {
     carsList.innerHTML = cars.map(cars => `
         <div class="col-xs-12 col-sm-6 col-md-3 card">
           <div class="card-body d-flex flex-column justify-content-end">
-            <h5 class="card-title">${cars.name}</h5>
-            <p class="card-text">${cars.price}</p>
+            <h5 class="card-title">${cars.type}</h5>
+            <p class="card-text">${new Intl.NumberFormat('en-ES', { style: 'currency', currency: 'USD' }).format(product.price)}</p>
             <a onclick="viewCar(${cars.id})" class="btn btn-primary">Ver más</a>
           </div>
         </div>

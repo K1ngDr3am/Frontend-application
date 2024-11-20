@@ -13,7 +13,7 @@ export const getCarsById = async (id) => {
 };
 
 // Crear un Producto
-export const addCarss = async (product) => {
+export const addCars = async (product) => {
     const respone = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
